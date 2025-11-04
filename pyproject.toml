@@ -1,0 +1,50 @@
+[project]
+name = "ibex-banks-rnn"
+version = "0.1.0"
+description = "RNN stock prediction for BBVA and Santander"
+authors = [
+    {name = "María González",email = "mgonzgarc@myuax.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10,<3.11"
+dependencies = [
+    "tensorflow (==2.10)",      # GPU Native version for Windows (requires system CUDA 11.2)
+    "tensorflow-io-gcs-filesystem (==0.31.0)",
+    "numpy (==1.26.4)",
+    # PyTorch + CUDA 13.0 embedded
+    "torch (>=2.9.0,<3.0.0)",
+    "torchvision (>=0.24.0,<0.25.0)",
+    "pandas (>=2.3.3,<3.0.0)",
+    "yfinance (>=0.2.66,<0.3.0)",
+    "scikit-learn (>=1.7.2,<2.0.0)",
+    "matplotlib (>=3.10.7,<4.0.0)",
+    "python-dotenv (>=1.2.1,<2.0.0)",
+    "seaborn (>=0.13.2,<0.14.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+# Official PyTorch CUDA wheels index (cu130)
+[[tool.poetry.source]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+priority = "supplemental"
+
+
+[tool.poetry.dependencies]
+torch = {source = "pytorch-cu130"}
+torchvision = {source = "pytorch-cu130"}
+
+# Development group (optional)
+[tool.poetry.group.dev.dependencies]
+black = "^25.9.0"
+isort = "^7.0.0"
+flake8 = "^7.3.0"
+ruff = "^0.14.3"
+pytest = "^8.4.2"
+nbqa = "^1.9.1"
+ipykernel = "^7.1.0"
+
