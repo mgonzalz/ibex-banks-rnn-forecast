@@ -1,0 +1,38 @@
+# Notes:
+#   This configuration file defines the main parameters for data acquisition, time periods,
+#   and directories used by the IBEX-Banks-RNN project. It specifies which financial assets
+#   will be analyzed, what columns will be extracted from Yahoo Finance, and the training/test
+#   date ranges.
+#
+# Purpose:
+#   To centralize all dataset-related configuration, ensuring reproducibility and easy updates
+#   to the data sources, date splits, and I/O directories.
+
+project:
+  timezone: "Europe/Madrid"  # Time zone for all time-based operations
+
+universe:
+  # Target assets (Stocks) + Reference indices for comparison
+  targets:
+    - symbol: "BBVA.MC"     # BBVA stock listed in the Madrid market
+      name: "BBVA"
+    - symbol: "SAN.MC"      # Banco Santander stock listed in Madrid
+      name: "Santander"
+  references:
+    - symbol: "^IBEX"       # IBEX 35 index (Spanish Stock Market)
+      name: "IBEX 35"
+    - symbol: "^GSPC"       # S&P 500 index (U.S. Benchmark)
+      name: "S&P 500"
+
+columns: ["Open", "High", "Low", "Close", "Adj Close", "Volume", "Dividends", "Stock Splits"]  # Standard OHLCV data
+
+dates:
+  start: "2000-01-01"       # Starting point for data download and analysis
+  train_end: "2025-11-01"   # End date for training period (Model can overfit here)
+  forecast_days: ["2025-11-03", "2025-11-04", "2025-11-05"]  # Dates to forecast (3–5 Nov 2025)
+
+io:
+  cache_dir: ".cache"             # Root cache directory for all intermediate files
+  raw_dir: ".cache/raw"           # Folder for raw data downloaded from Yahoo Finance
+  exo_dir: ".cache/exogenous"     # Folder for exogenous variables (macro events, BCE, etc.)
+  features_dir: ".cache/features" # Folder for processed feature datasets ready for modeling
