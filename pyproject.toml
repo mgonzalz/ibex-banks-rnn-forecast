@@ -19,7 +19,8 @@ dependencies = [
     "scikit-learn (>=1.7.2,<2.0.0)",
     "matplotlib (>=3.10.7,<4.0.0)",
     "python-dotenv (>=1.2.1,<2.0.0)",
-    "seaborn (>=0.13.2,<0.14.0)"
+    "seaborn (>=0.13.2,<0.14.0)",
+    "pyyaml (>=6.0.3,<7.0.0)"
 ]
 
 
