@@ -188,5 +188,3 @@ Por tanto:
 
 * Para **análisis financieros, comparativos o de inversión a largo plazo**, se recomienda el uso del **precio ajustado**.
 * Para **estrategias de *trading* o análisis de comportamiento de mercado**, se deben emplear **precios nominales** sin ajuste.
-
-En el contexto del proyecto *“Predicción de las acciones de BBVA y Santander mediante RNN”*, la utilización del **precio ajustado** es la opción más adecuada, ya que permite entrenar modelos basados en series temporales **coherentes, continuas y representativas de la rentabilidad real**, eliminando distorsiones derivadas de dividendos o divisiones de acciones.
