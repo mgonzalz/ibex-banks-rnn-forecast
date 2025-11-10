@@ -1,0 +1,132 @@
+meta:
+  dataset: "IBEX_Banks_RNN"
+  description: "Exogenous variables based on financial, political and economic events that occurred between 2000 and 2025."
+  version: "1.0.0"
+  frequency: "B"
+  tickers: ["BBVA.MC", "SAN.MC"]
+  period:
+    start: "2000-01-01"
+    end:   "2025-11-01"
+
+calendar:
+  include_month: false       # Not important feature (EDA shows low impact)
+  include_quarter: true
+  include_weekday: false     # Not important feature (EDA shows low impact)
+
+events:
+  - name: "DotCom_Crisis"
+    type: "macro_crisis"
+    start: "2000-03-01"
+    end:   "2003-03-31"
+    intensity: 1.0
+    polarity: "bearish"       # Bad for banks: Crisis tech + Recession
+    apply_to: ["BBVA.MC", "SAN.MC"]
+
+  - name: "Spain_Credit_Boom"
+    type: "macro_expansion"
+    start: "2003-04-01"
+    end:   "2007-12-31"
+    intensity: 1.0
+    polarity: "bullish"       # Good for banks: Credit expansion + Housing boom
+    apply_to: ["BBVA.MC", "SAN.MC"]
+
+  - name: "Global_Financial_Crisis"
+    type: "macro_crisis"
+    start: "2008-09-01"
+    end:   "2009-06-30"
+    intensity: 1.0
+    polarity: "bearish"       # Lehman Brothers + Recession
+    apply_to: ["BBVA.MC", "SAN.MC"]
+
+  - name: "Euro_Sovereign_Crisis"
+    type: "macro_crisis"
+    start: "2010-05-01"
+    end:   "2012-12-31"
+    intensity: 1.0
+    polarity: "bearish"       # Risk of Euro breakup, bailouts
+    apply_to: ["BBVA.MC", "SAN.MC"]
+
+  - name: "Post_Crisis_Recovery"
+    type: "macro_recovery"
+    start: "2013-01-01"
+    end:   "2015-12-31"
+    intensity: 1.0
+    polarity: "bullish"       # Restructuring, ECB stimulus
+    apply_to: ["BBVA.MC", "SAN.MC"]
+
+  - name: "Brexit_2016"
+    type: "political_event"
+    start: "2016-06-20"
+    end:   "2016-12-31"
+    intensity: 1.0
+    polarity: "bearish"       # Marginally negative impact due to uncertainty
+    apply_to: ["BBVA.MC", "SAN.MC"]
+
+  - name: "LateCycle_Weakness"
+    type: "macro_slowdown"
+    start: "2018-01-01"
+    end:   "2020-02-14"
+    intensity: 1.0
+    polarity: "bearish"       # Weak growth before COVID
+    apply_to: ["BBVA.MC", "SAN.MC"]
+
+  - name: "COVID_Pandemic"
+    type: "macro_crisis"
+    start: "2020-02-15"
+    end:   "2020-12-31"
+    intensity: 1.0
+    polarity: "bearish"       # Minimum for banks: Crash + uncertainty
+    apply_to: ["BBVA.MC", "SAN.MC"]
+
+  - name: "Reopening_Recovery"
+    type: "macro_recovery"
+    start: "2021-01-01"
+    end:   "2021-12-31"
+    intensity: 1.0
+    polarity: "bullish"       # Reopening and margin improvement
+    apply_to: ["BBVA.MC", "SAN.MC"]
+
+  - name: "Ukraine_War"
+    type: "geopolitical_event"
+    start: "2022-02-24"
+    end:   "2023-03-31"
+    intensity: 1.0
+    polarity: "bullish"       # Eventhough negative, banks benefit from higher rates
+    apply_to: ["BBVA.MC", "SAN.MC"]
+
+  - name: "ECB_Rate_Hike_Cycle"
+    type: "monetary_policy"
+    start: "2022-07-01"
+    end:   "2023-12-31"
+    intensity: 1.0
+    polarity: "bullish"       # Explicitly positive for banks: Rising rates
+    apply_to: ["BBVA.MC", "SAN.MC"]
+
+  - name: "Profits_Buybacks_Consolidation"
+    type: "sector_dynamics"
+    start: "2024-01-01"
+    end:   "2025-12-31"
+    intensity: 1.0
+    polarity: "bullish"       # Record profits, buybacks, upward trend
+    apply_to: ["BBVA.MC", "SAN.MC"]
+
+macroeconomic_series:
+  include: true
+  frequency: "M"     # Monthly frequency for macro series because most are monthly/quarterly
+  indicators:
+    - name: "MACRO_ECB_Deposit_Rate"
+      source: "ECB SDW"
+      dataset: "ECB_Deposit_Rate"
+      country: "Eurozone"
+    - name: "MACRO_Inflation_HICP_EA"
+      source: "ECB/OECD"
+      dataset: "HICP_All_Items"
+      country: "Eurozone"
+    - name: "MACRO_GDP_ES"
+      source: "OECD"
+      dataset: "Quarterly_GDP_Volume"
+      country: "Spain"
+    - name: "MACRO_IBEX35"
+      source: "Yahoo Finance"
+      dataset: "^IBEX"
+      country: "Spain"
