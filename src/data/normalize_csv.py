@@ -22,6 +22,7 @@ from src.utils.logging_utils import log_lineage
 
 REQUIRED_COLUMNS = ["Date"] + load_config().columns
 
+
 def _read_loose_csv(path: str | Path) -> pd.DataFrame:
     path = Path(path)
     try:
