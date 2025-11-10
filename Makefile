@@ -37,6 +37,9 @@ data-raw:
 data-validate:
 	$(POETRY) run python -m src.data.validate_integrity
 
+run-eda:
+	$(POETRY) run python -m src.eda.run_eda --period 252
+
 ## Auto-fix imports, formatting and lint issues (isort -> black -> ruff --fix)
 fix:
 	$(POETRY) run isort $(SRC_DIRS)
