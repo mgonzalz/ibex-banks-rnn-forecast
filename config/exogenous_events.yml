@@ -8,11 +8,6 @@ meta:
     start: "2000-01-01"
     end:   "2025-11-01"
 
-calendar:
-  include_month: false       # Not important feature (EDA shows low impact)
-  include_quarter: true
-  include_weekday: false     # Not important feature (EDA shows low impact)
-
 events:
   - name: "DotCom_Crisis"
     type: "macro_crisis"
@@ -122,10 +117,6 @@ macroeconomic_series:
       source: "ECB/OECD"
       dataset: "HICP_All_Items"
       country: "Eurozone"
-    - name: "MACRO_GDP_ES"
-      source: "OECD"
-      dataset: "Quarterly_GDP_Volume"
-      country: "Spain"
     - name: "MACRO_IBEX35"
       source: "Yahoo Finance"
       dataset: "^IBEX"
