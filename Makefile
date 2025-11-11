@@ -37,8 +37,13 @@ data-raw:
 data-validate:
 	$(POETRY) run python -m src.data.validate_integrity
 
+## Run exploratory data analysis (EDA) for given period (default: 252 days)
 run-eda:
 	$(POETRY) run python -m src.eda.run_eda --period 252
+
+## Build exogenous datasets (events + macro) and store under .cache/exogenous/
+build-exogenous:
+	$(POETRY) run python -m src.data.build_exogenous
 
 ## Auto-fix imports, formatting and lint issues (isort -> black -> ruff --fix)
 fix:
