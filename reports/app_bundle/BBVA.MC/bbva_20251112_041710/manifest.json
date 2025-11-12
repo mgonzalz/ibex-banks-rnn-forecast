@@ -1,0 +1,18 @@
+{
+  "bundle_path": "C:\\Users\\mgonzgarc\\Documents\\GitHub\\ibex-banks-rnn-forecast\\reports\\app_bundle\\BBVA.MC\\bbva_20251112_041710",
+  "artifacts": {
+    "models": [
+      "models/BBVA.MC_rnn.pt",
+      "models/BBVA.MC_lstm.pt",
+      "models/BBVA.MC_gru.pt"
+    ],
+    "scalers": [
+      "scalers/scaler_X_BBVA.MC.joblib",
+      "scalers/scaler_y_BBVA.MC.joblib"
+    ],
+    "meta": [
+      "meta/config.json"
+    ]
+  },
+  "created_at": "20251112_041710"
+}
