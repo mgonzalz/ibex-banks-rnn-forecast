@@ -1,0 +1,18 @@
+{
+  "bundle_path": "C:\\Users\\mgonzgarc\\Documents\\GitHub\\ibex-banks-rnn-forecast\\reports\\app_bundle\\SAN.MC\\san_20251112_005613",
+  "artifacts": {
+    "models": [
+      "models/SAN.MC_rnn.pt",
+      "models/SAN.MC_lstm.pt",
+      "models/SAN.MC_gru.pt"
+    ],
+    "scalers": [
+      "scalers/scaler_X_SAN.MC.joblib",
+      "scalers/scaler_y_SAN.MC.joblib"
+    ],
+    "meta": [
+      "meta/config.json"
+    ]
+  },
+  "created_at": "20251112_005613"
+}
